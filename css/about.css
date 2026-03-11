@@ -1,0 +1,112 @@
+.about-page{
+  padding-bottom:40px;
+}
+
+.about-intro{
+  max-width:760px;
+  padding-top:40px;
+}
+
+
+
+.about-lead{
+  font-size:16px;
+  line-height:2;
+  color:var(--text-soft);
+}
+
+.about-experience{
+  padding-top:20px;
+}
+
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:34px;
+}
+
+.timeline-item{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:28px;
+  padding-bottom:28px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.timeline-date{
+  font-size:14px;
+  letter-spacing:.12em;
+  color:var(--accent);
+  padding-top:4px;
+}
+
+.timeline-content h3{
+  font-size:22px;
+  font-weight:500;
+  letter-spacing:.05em;
+  color:var(--text-main);
+  margin-bottom:8px;
+}
+
+.timeline-company{
+  font-size:14px;
+  color:var(--text-soft);
+  margin-bottom:10px;
+  letter-spacing:.06em;
+}
+
+.timeline-desc{
+  font-size:15px;
+  line-height:1.9;
+  color:var(--text-muted);
+  max-width:700px;
+}
+
+@media (max-width:768px){
+  .about-title{
+    font-size:32px;
+  }
+
+  .timeline-item{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .timeline-date{
+    padding-top:0;
+  }
+
+  .timeline-content h3{
+    font-size:20px;
+  }
+}
+
+@media (max-width:600px){
+  .about-intro{
+    padding-top:10px;
+  }
+
+  .about-title{
+    font-size:28px;
+  }
+
+  .about-lead{
+    font-size:15px;
+  }
+
+  .timeline{
+    gap:26px;
+  }
+
+  .timeline-item{
+    padding-bottom:22px;
+  }
+
+  .timeline-content h3{
+    font-size:18px;
+  }
+
+  .timeline-desc{
+    font-size:14px;
+  }
+}

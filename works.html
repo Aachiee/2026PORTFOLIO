@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works | Archie Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/works.css">
+</head>
+<body>
+
+<header class="container site-header">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" class="logo-img" alt="Archie Logo">
+    <span class="logo-text">ARCHIE</span>
+  </a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="desktop-nav">
+    <a href="index.html">HOME</a>
+    <a href="works.html">WORKS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">HOME</a>
+  <a href="works.html">WORKS</a>
+  <a href="about.html">ABOUT</a>
+  <a href="contact.html">CONTACT</a>
+</div>
+
+  <main class="container works-page">
+    <section class="section">
+      <h2 class="section-title">電影海報 Posters</h2>
+
+      <div class="poster-grid">
+        <button
+          class="work-card"
+          type="button"
+          data-title="八歲 K9"
+          data-category="電影海報 Posters"
+          data-desc="這是電影主視覺與延伸設計專案，包含海報、社群宣傳圖、票券與其他應用物。"
+          data-cover="images/八歲K9_banner.jpg"
+          data-gallery='["images/八歲K9_英勇版.jpg","images/八歲K9_可愛版.jpg"]'
+          data-trailer="https://www.youtube.com/embed/cDOwu5mFZRQ"        >
+          <div class="work-thumb">
+            <img src="images/八歲K9_英勇版.jpg" alt="八歲 K9">
+          </div>
+          <p class="work-name">八歲 K9</p>
+        </button>
+
+        <button
+          class="work-card"
+          type="button"
+          data-title="突破:三千米的泳氣"
+          data-category="電影海報 Posters"
+          data-cover=""
+          data-desc="此專案以電影海報為核心，延伸出網路宣傳視覺與實體印刷物。"
+          data-gallery='["images/突破_01.jpg","images/突破_02.jpg","images/包廳現場.jpg","images/哈林哥節目.jpg","images/日月潭泳渡活動.jpg","images/粉絲見面會.jpg","images/簽名海報.jpg","images/合照.jpg"]'
+          data-trailer="https://www.youtube.com/embed/gTyD-v5OfuE"
+        >
+          <div class="work-thumb">
+            <img src="images/突破_03.jpg" alt="突破:三千米的泳氣">
+          </div>
+          <p class="work-name">突破:三千米的泳氣</p>
+        </button>
+
+        <button
+          class="work-card"
+          type="button"
+          data-title="其他電影"
+          data-category="電影海報 Posters"
+          data-desc="以主海報建立電影整體氛圍，並延伸出多項平面與數位應用。"
+          data-cover=""
+          data-gallery='["images/舞與舞者.jpg","images/耀青春.jpg","images/腎上腺母侵.jpg","images/搬家.jpg"]'
+        >
+          <div class="work-thumb">
+            <img src="images/舞與舞者.jpg" alt="其他電影">
+          </div>
+          <p class="work-name">其他電影</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">品牌設計 CIS Design</h2>
+
+      <div class="cis-grid">
+        <button
+          class="work-card cis-card"
+          type="button"
+          data-title="品牌識別 A"
+          data-category="Corporate Identity System"
+          data-desc="品牌識別專案，包含 Logo、名片、標準色與延伸應用規劃。"
+          data-cover="images/cis1.jpg"
+          data-gallery='["images/cis1.jpg","images/cis1-detail1.jpg","images/cis1-detail2.jpg","images/cis1-detail3.jpg"]'
+        >
+          <div class="work-thumb work-thumb-cis">
+            <img src="images/cis1.jpg" alt="品牌識別 A">
+          </div>
+          <p class="work-name">品牌識別 A</p>
+        </button>
+
+        <button
+          class="work-card cis-card"
+          type="button"
+          data-title="品牌識別 B"
+          data-category="Corporate Identity System"
+          data-desc="以一致性的視覺語言整理品牌形象，建立完整識別系統。"
+          data-cover="images/cis2.jpg"
+          data-gallery='["images/cis2.jpg","images/cis2-detail1.jpg","images/cis2-detail2.jpg"]'
+        >
+          <div class="work-thumb work-thumb-cis">
+            <img src="images/cis2.jpg" alt="品牌識別 B">
+          </div>
+          <p class="work-name">品牌識別 B</p>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Overlay -->
+  <div class="work-overlay" id="workOverlay" aria-hidden="true">
+    <div class="overlay-backdrop" id="overlayBackdrop"></div>
+
+    <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+      <button class="overlay-close" id="overlayClose" aria-label="關閉">×</button>
+
+      <div class="overlay-content">
+        <div class="overlay-header">
+          <p class="overlay-category" id="overlayCategory"></p>
+          <h3 class="overlay-title" id="overlayTitle"></h3>
+          <p class="overlay-desc" id="overlayDesc"></p>
+        </div>
+
+        <div class="overlay-main-image">
+          <img id="overlayMainImage" src="" alt="">
+        </div>
+
+        <div class="overlay-gallery" id="overlayGallery"></div>
+        <div class="overlay-video">
+  <iframe
+    src=""
+    id="overlayTrailer"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container">
+    © 2026 ARCHIE PORTFOLIO
+  </footer>
+
+  <script src="js/works.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
