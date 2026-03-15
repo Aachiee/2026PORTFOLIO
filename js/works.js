@@ -57,9 +57,12 @@ function openOverlay(card) {
     }
   }
 
-  overlay.classList.add('active');
-  overlay.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+overlay.classList.add('active');
+overlay.setAttribute('aria-hidden', 'false');
+document.body.style.overflow = 'hidden';
+
+overlay.scrollTop = 0;
+document.querySelector('.overlay-panel').scrollTop = 0;
 }
 
 function closeOverlay() {
