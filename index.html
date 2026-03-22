@@ -1,74 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Archie Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="icon" href="images/sLOGO.png" />
+    <script src="js/menu.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Archie Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/home.css">
-  <script src="js/menu.js"></script>
-</head>
+  <body>
+    <header class="container site-header">
+      <a href="index.html" class="logo">
+        <img src="images/LOGO.png" class="logo-img" alt="Archie Logo" />
+        <span class="logo-text">ARCHIE</span>
+      </a>
 
-<body>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="開啟選單"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-  <header class="container site-header">
-    <a href="index.html" class="logo">
-      <img src="images/LOGO.png" class="logo-img" alt="Archie Logo">
-      <span class="logo-text">ARCHIE</span>
-    </a>
+      <nav class="desktop-nav">
+        <a href="index.html">HOME</a>
+        <a href="works.html">WORKS</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+    </header>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="mobileMenu"
-      type="button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="desktop-nav">
+    <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">HOME</a>
       <a href="works.html">WORKS</a>
       <a href="about.html">ABOUT</a>
       <a href="contact.html">CONTACT</a>
-    </nav>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">HOME</a>
-    <a href="works.html">WORKS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">HOME</a>
-    <a href="works.html">WORKS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
-  </div>
-
-  <!-- 封面圖片 -->
-  <section class="hero">
-    <div class="hero-wrap">
-
-      <div class="hero-logo">
-        <img src="images/LOGO.png" alt="Archie Lin Logo">
-      </div>
-
-      <div class="hero-text">
-        <p class="hero-kicker">PORTFOLIO</p>
-        <p class="hero-subtitle">林晨祈　精選作品集 2024-2026</p>
-      </div>
-
     </div>
-  </section>
 
-  <footer class="container">
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">HOME</a>
+      <a href="works.html">WORKS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
 
-    © 2026 ARCHIE PORTFOLIO
+    <!-- 封面圖片 -->
+    <section class="hero">
+      <div class="hero-wrap">
+        <div class="hero-logo">
+          <img src="images/LOGO.png" alt="Archie Lin Logo" />
+        </div>
 
-  </footer>
+        <div class="hero-text">
+          <p class="hero-kicker">PORTFOLIO</p>
+          <p class="hero-subtitle">林晨祈　精選作品集 2024-2026</p>
+        </div>
+      </div>
+    </section>
 
-</body>
-
+    <footer class="container">© 2026 ARCHIE PORTFOLIO</footer>
+  </body>
 </html>
