@@ -1,45 +1,52 @@
-const workCards = document.querySelectorAll('.work-card');
-const overlay = document.getElementById('workOverlay');
-const overlayBackdrop = document.getElementById('overlayBackdrop');
-const overlayClose = document.getElementById('overlayClose');
+const workCards = document.querySelectorAll(".work-card");
+const overlay = document.getElementById("workOverlay");
+const overlayBackdrop = document.getElementById("overlayBackdrop");
+const overlayClose = document.getElementById("overlayClose");
 
-const overlayCategory = document.getElementById('overlayCategory');
-const overlayTitle = document.getElementById('overlayTitle');
-const overlayDesc = document.getElementById('overlayDesc');
-const overlayMainImage = document.getElementById('overlayMainImage');
-const overlayMainImageWrap = document.querySelector('.overlay-main-image');
-const overlayGallery = document.getElementById('overlayGallery');
-const overlayTrailer = document.getElementById('overlayTrailer');
+const overlayCategory = document.getElementById("overlayCategory");
+const overlayTitle = document.getElementById("overlayTitle");
+const overlayDesc = document.getElementById("overlayDesc");
+const overlayMainImage = document.getElementById("overlayMainImage");
+const overlayMainImageWrap = document.querySelector(".overlay-main-image");
+const overlayGallery = document.getElementById("overlayGallery");
+const overlayTrailer = document.getElementById("overlayTrailer");
+const overlayVideoWrap = document.querySelector(".overlay-video");
+const overlayPanel = document.querySelector(".overlay-panel");
 
 function openOverlay(card) {
-  const title = card.dataset.title || '';
-  const category = card.dataset.category || '';
-  const desc = card.dataset.desc || '';
-  const cover = card.dataset.cover || '';
-  const gallery = JSON.parse(card.dataset.gallery || '[]');
-  const trailer = card.dataset.trailer || '';
+  const title = card.dataset.title || "";
+  const category = card.dataset.category || "";
+  const desc = card.dataset.desc || "";
+  const desktopCover = card.dataset.cover || "";
+  const mobileCover = card.dataset.coverMobile || "";
+  const cover =
+    window.innerWidth <= 600 && mobileCover ? mobileCover : desktopCover;
+  const gallery = JSON.parse(card.dataset.gallery || "[]");
+  const trailer = card.dataset.trailer || "";
 
   overlayCategory.textContent = category;
   overlayTitle.textContent = title;
-  overlayDesc.textContent = desc;
+  overlayDesc.innerHTML = desc
+    .replace(/\|\|\|/g, "<br><br>")
+    .replace(/\|\|/g, "<br>");
 
   if (cover) {
     overlayMainImage.src = cover;
     overlayMainImage.alt = title;
-    overlayMainImageWrap.style.display = 'block';
+    overlayMainImageWrap.style.display = "block";
   } else {
-    overlayMainImage.src = '';
-    overlayMainImage.alt = '';
-    overlayMainImageWrap.style.display = 'none';
+    overlayMainImage.src = "";
+    overlayMainImage.alt = "";
+    overlayMainImageWrap.style.display = "none";
   }
 
-  overlayGallery.innerHTML = '';
+  overlayGallery.innerHTML = "";
 
   gallery.forEach((src, index) => {
-    const item = document.createElement('div');
-    item.className = 'overlay-gallery-item';
+    const item = document.createElement("div");
+    item.className = "overlay-gallery-item";
 
-    const img = document.createElement('img');
+    const img = document.createElement("img");
     img.src = src;
     img.alt = `${title} detail ${index + 1}`;
 
@@ -47,52 +54,72 @@ function openOverlay(card) {
     overlayGallery.appendChild(item);
   });
 
-  if (overlayTrailer) {
+  if (gallery.length === 0) {
+    overlayGallery.style.display = "none";
+  } else {
+    overlayGallery.style.display = "grid";
+  }
+
+  if (overlayTrailer && overlayVideoWrap) {
     if (trailer) {
       overlayTrailer.src = trailer;
-      overlayTrailer.parentElement.style.display = 'block';
+      overlayVideoWrap.style.display = "block";
     } else {
-      overlayTrailer.src = '';
-      overlayTrailer.parentElement.style.display = 'none';
+      overlayTrailer.src = "";
+      overlayVideoWrap.style.display = "none";
     }
   }
 
-overlay.classList.add('active');
-overlay.setAttribute('aria-hidden', 'false');
-document.body.style.overflow = 'hidden';
+  if (card.classList.contains("cis-card")) {
+    overlayPanel.classList.add("is-cis");
+  } else {
+    overlayPanel.classList.remove("is-cis");
+  }
 
-overlay.scrollTop = 0;
-document.querySelector('.overlay-panel').scrollTop = 0;
+  overlay.classList.add("active");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  overlay.scrollTop = 0;
+  overlayPanel.scrollTop = 0;
 }
 
 function closeOverlay() {
-  overlay.classList.remove('active');
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  overlay.classList.remove("active");
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
 
   if (overlayTrailer) {
-    overlayTrailer.src = '';
+    overlayTrailer.src = "";
   }
 
   if (overlayMainImage) {
-    overlayMainImage.src = '';
-    overlayMainImage.alt = '';
+    overlayMainImage.src = "";
+    overlayMainImage.alt = "";
   }
 }
 
 workCards.forEach((card) => {
-  card.addEventListener('click', () => openOverlay(card));
+  card.addEventListener("click", () => openOverlay(card));
 });
 
-overlayClose.addEventListener('click', closeOverlay);
-overlayBackdrop.addEventListener('click', closeOverlay);
+if (overlayClose) {
+  overlayClose.addEventListener("click", closeOverlay);
+}
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
+if (overlayBackdrop) {
+  overlayBackdrop.addEventListener("click", closeOverlay);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
     closeOverlay();
   }
 });
-window.addEventListener("scroll", () => {
-  document.querySelector(".site-header")
-    .classList.toggle("scrolled", window.scrollY > 10);
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
 });
