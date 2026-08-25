@@ -110,11 +110,9 @@
   margin: 100px auto 20px;
   overflow-y: auto;
   overflow-x: hidden;
-  background: linear-gradient(
-    180deg,
-    rgba(32, 38, 58, 0.96) 0%,
-    rgba(18, 23, 37, 0.98) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(32, 38, 58, 0.96) 0%,
+      rgba(18, 23, 37, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   padding: 32px;
@@ -166,6 +164,7 @@
   color: var(--text-soft);
   max-width: 720px;
 }
+
 .overlay-desc {
   white-space: pre-line;
 }
@@ -225,9 +224,11 @@
   user-select: none;
   -webkit-user-select: none;
 }
+
 .image-protect {
   position: relative;
 }
+
 .image-shield {
   position: absolute;
   inset: 0;
@@ -235,6 +236,88 @@
   z-index: 2;
   cursor: default;
 }
+
+/* ===== 圖片放大 Lightbox ===== */
+
+.image-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+}
+
+.image-lightbox.active {
+  display: flex;
+}
+
+#lightboxImage {
+  max-width: 90vw;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* 關閉 */
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  border: none;
+  background: none;
+
+  color: white;
+  font-size: 42px;
+
+  cursor: pointer;
+
+  z-index: 10001;
+}
+
+/* 左右按鈕 */
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+
+  color: white;
+
+  font-size: 50px;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  z-index: 10001;
+}
+
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
+
+
 
 /* tablet */
 @media (max-width: 1024px) {
@@ -248,13 +331,15 @@
 
   .work-thumb img {
     width: 100%;
-    height: auto; /* ✅ 關鍵 */
+    height: auto;
+    /* ✅ 關鍵 */
     object-fit: contain;
   }
 }
 
 /* mobile */
 @media (max-width: 600px) {
+
   .poster-grid,
   .cis-grid {
     grid-template-columns: 1fr;
@@ -311,4 +396,50 @@
     margin-left: 90%;
     font-size: 26px;
   }
+}
+
+/* === 圖片 Lightbox 縮放與拖曳樣式 === */
+.lightbox-zoom-controls {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 10002;
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-zoom-controls button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.lightbox-zoom-controls button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 確保使用 .lightbox-image 才能正確讓圖片變形與抓取 */
+.lightbox-image {
+  transition: transform 0.1s ease-out;
+  transform-origin: center center;
+  cursor: grab;
+}
+
+.lightbox-image:active {
+  cursor: grabbing;
 }
